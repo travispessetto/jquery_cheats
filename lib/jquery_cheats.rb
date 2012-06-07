@@ -1,5 +1,6 @@
 module JQueryCheats
   require 'railtie' if defined?(Rails)
+  require 'engine' if defined?(Rails)
   module HoverImage
     #class used to do a quick Hover image
     

@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = "JQuery Asset Pipeline tricks"
   s.email = "travis@pessetto.com"
   s.extra_rdoc_files = ["README.md", "lib/jquery_cheats.rb"]
-  s.files = ["README.md", "Rakefile", "lib/jquery_cheats.rb", "Manifest", "jquery_cheats.gemspec"]
+  s.files = Dir["{lib,vendor}/**/*"]+["README.md", "Rakefile", "Manifest", "jquery_cheats.gemspec"]
   s.homepage = "https://github.com/plowdawg/jquery_cheats"
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Jquery_cheats", "--main", "README.md"]
   s.require_paths = ["lib"]
