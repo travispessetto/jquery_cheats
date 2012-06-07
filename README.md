@@ -2,11 +2,18 @@
 JQuery Cheats is Gem that makes it easy to do simple little JavaScript tricks via the JQuery
 library.
 ##Installation
-It is as easy as adding this to your Gemfile and Running bundle install. Requires Rails 3
+It is as easy as adding this to your Gemfile
 
 ```ruby
-gem 'jquery_cheats','~>1.2.0'
+gem 'jquery_cheats','~>2.0.0'
 ```
+
+Then add the following to app/assets/application.js
+
+```js
+//= require jqueryCheats
+```
+
 ##Functions
 
 Mouse over image, Image1 changes to Image2 when moused over:
@@ -35,3 +42,11 @@ right
 <%= simplemolink("/path/to/imgage.png",link_path) %>
 ```
 This will try to find /path/to/image-hover.png as the image to use when moused over.
+
+##Ajax Requests for Field Items
+
+The new assetpipline JavaScript makes it possible to submit form elements via data-remote calls when changed.  Only the following are supported.
+
+#Select Box
+
+To use ajax with jquery_cheats add data-onchange="true" and data-url="/path/to"
