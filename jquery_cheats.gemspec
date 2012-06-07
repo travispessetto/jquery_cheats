@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "jquery_cheats"
-  s.version = "2.0.0"
+  s.version = "2.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Travis Pessettto"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = "JQuery Asset Pipeline tricks"
   s.email = "travis@pessetto.com"
   s.extra_rdoc_files = ["README.md", "lib/jquery_cheats.rb"]
-  s.files = Dir["{lib,vendor}/**/*"]+["README.md", "Rakefile", "Manifest", "jquery_cheats.gemspec"]
+  s.files = Dir["{lib,app}/**/*"]+["README.md", "Rakefile", "Manifest", "jquery_cheats.gemspec"]
   s.homepage = "https://github.com/plowdawg/jquery_cheats"
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Jquery_cheats", "--main", "README.md"]
   s.require_paths = ["lib"]
