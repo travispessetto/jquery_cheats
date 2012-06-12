@@ -14,7 +14,6 @@ $(document).ready(function(){
 		if($(this).attr("data-params"))
 		{
 			data += "&"+$(this).attr("data-params");
-			alert(data);
 		}
 		$.ajax({type: "post",
 		url: eval($(this).attr("data-onclick")),
