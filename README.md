@@ -17,8 +17,11 @@ Then add the following to app/assets/application.js
 If you would like charting functionality make sure the following code is in app/assets/application.js
 
 ```js
-//=require jqplot
+//= require jqplot/jquery.jqplot.js
 ```
+
+Depending on the chart, you will have to include the plugin too, which are loaded in the jqplot/plugins directory
+
 
 ##Functions
 
@@ -73,3 +76,11 @@ JQuery Cheats comes packaged with JQueryPlots as of 2.1.0, but some functions ma
 ###Barchart
 
 JQuery Cheats Barchart is the first graph to be implemented and uses XML to parse the data.
+
+Make sure the following is in your app/assets/javascripts/application.js file
+
+```js
+//= jqplot/plugins/jqplot.barRenderer.min.js
+//= jqplot/plugins/jqplot.categoryAxisRenderer.min.js
+//= jqplot/plugins/jqplot.pointLabels.min.js
+```

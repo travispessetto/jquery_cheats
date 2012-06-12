@@ -44,7 +44,7 @@ function BarChart(name,xmlurl)
 		alert("assigning heigth:"+height)
 		$('div#'+name).css("height",height);
 		$('div#'+name).css("background-color","#F00");
-		$('div#'+name).html = "HELLO MOTO!!"
+		$.jqplot(name,getBars(xml));
 		});
 }
 
@@ -53,9 +53,15 @@ function getTicks(url)
 	//this function should get the ticks from the XML
 }
 
-function XML2Bars(url)
+function getBars(xml)
 {
 	//this function aims at translating the data into a 2d array for rendering
+	var twoDArray = [];
+	$(xml).find("category").each(
+		function(){
+			twoDArray.push(loadBars($(this)));
+		});
+	return twoDArray;
 }
 
 function XMLWidth(xml)
@@ -67,4 +73,14 @@ function XMLWidth(xml)
 function XMLHeight(xml)
 {
 	return $(xml).find("size").attr("height");
+}
+
+function laodBars(xml)
+{
+	var bars[];
+	$(xml).find("bar").each(
+		function(){
+			bars.push($(this).attr("size"));
+		});
+	return bars;
 }
