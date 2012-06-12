@@ -49,7 +49,7 @@ function BarChart(name,xmlurl)
             rendererOptions: {fillToZero: true},
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: getTicks(xml);
+                ticks: getTicks(xml)
             },
             yaxis: {
                 pad: 1.05,
