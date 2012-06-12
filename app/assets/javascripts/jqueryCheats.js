@@ -49,7 +49,7 @@ function BarChart(name,xmlurl)
 	                renderer: $.jqplot.CategoryAxisRenderer,
 	                ticks: getTicks(xml)
 	            },
-	            yaxix:
+	            yaxis:
 	            {
 	            	min: $(xml).find("yaxis").attr("min"),
 	            	max: $(xml).find("yaxix").attr("max")
