@@ -22,7 +22,7 @@ $(document).ready(function(){
 		dataType: "script"});
 	});
 	//start by loading the barcharts...
-	$("div.barchart").each(BarChart($(this).attr("name"),$(this).attr("data-xmlurl")));
+	$("div.barchart").each(function(){BarChart($(this).attr("name"),$(this).attr("data-xmlurl"))});
 });
 
 ///some helpter functions here
@@ -34,14 +34,14 @@ function BarChart(name,xmlurl)
 {
 	//this is the BarChart Method
 	//get the XML data
-	/*$.get(xmlurl,function(xml){
+	$.get(xmlurl,function(xml){
 		//we have the URL object as xml
 		var width = XMLWidth(xml);//The width of the chart
 		var height = XMLHeight(xml);
 		//append these to the div
 		$('div#'+name).css("width",width);
 		$('div#'+name).css("heigth",height);	
-		});*/
+		});
 }
 
 function getTicks(url)
