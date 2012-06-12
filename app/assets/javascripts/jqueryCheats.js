@@ -52,7 +52,8 @@ function BarChart(name,xmlurl)
 	            yaxis:
 	            {
 	            	min: $(xml).find("yaxis").attr("min"),
-	            	max: $(xml).find("yaxis").attr("max")
+	            	max: $(xml).find("yaxis").attr("max"),
+	            	autoscale: true
 	            }
             }
 	        });
