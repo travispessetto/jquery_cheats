@@ -35,6 +35,10 @@ module JQueryCheats
       return newlink
     end
     
+    def barchart()
+      
+    end
+    
     def initialize()
      
     end

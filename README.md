@@ -47,6 +47,23 @@ This will try to find /path/to/image-hover.png as the image to use when moused o
 
 The new assetpipline JavaScript makes it possible to submit form elements via data-remote calls when changed.  Only the following are supported.
 
-#Select Box
+###Select Box
 
 To use ajax with jquery_cheats add data-onchange="true" and data-url="/path/to"
+
+###Radio Button
+
+To use with jquery_cheats simply pass a URL into the data-onchange parameter, if you need to send extra parameters use data-params using a serialized
+string such as(item=4&item2=3)
+
+```erb
+<%= f.radio_button "foo", foo_path, "data-onchange"=>"/path" %>
+```
+
+##Graphing
+
+JQuery Cheats comes packaged with JQueryPlots as of 2.1.0, but some functions may not be available until later dates.
+
+###Barchart
+
+JQuery Cheats Barchart is the first graph to be implemented and uses XML to parse the data.
