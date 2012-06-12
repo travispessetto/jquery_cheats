@@ -13,13 +13,13 @@ $(document).ready(function(){
 		var data = $(this).serialize();
 		if($(this).attr("data-params"))
 		{
-			data += $(this).attr("data-params");
+			data += "&"+$(this).attr("data-params");
 		}
 		$.ajax({type: "post",
 		url: $(this).attr("data-onclick"),
 		data: data,
 		success: function(data){eval(data);},
-		dataType: "script"})
+		dataType: "script"});
 	});
 });
 
