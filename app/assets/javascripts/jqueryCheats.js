@@ -8,7 +8,7 @@ $(document).ready(function(){
 	         dataType: "script"});
 	});
 	//make radio buttons onchange compatible
-	$('input[type="radio"][data-onchange]').live("change",function()
+	$('input[type="radio"][data-onclick]').live("change",function()
 	{
 		var data = $(this).serialize();
 		if($(this).attr("data-params"))

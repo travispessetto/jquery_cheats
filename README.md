@@ -5,7 +5,7 @@ library.
 It is as easy as adding this to your Gemfile
 
 ```ruby
-gem 'jquery_cheats','~>2.0.0'
+gem 'jquery_cheats','~>2.1.0'
 ```
 
 Then add the following to app/assets/application.js
