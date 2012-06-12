@@ -35,11 +35,13 @@ module JQueryCheats
       return newlink
     end
     
-    def barchart()
-      
+    def barchart(name)
+      #create a new barchar div tag, class of jqplot is used to simplify jquery binding
+      html = "<div id=\"#{name}\" class=\"jqplot\"></div>".html_safe
+      #we will have to relly on XML to get the rest of the data...
     end
     
-    def initialize()
+    def initialize
      
     end
     
