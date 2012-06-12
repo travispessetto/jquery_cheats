@@ -44,6 +44,7 @@ function BarChart(name,xmlurl)
 		alert("assigning heigth:"+height)
 		$('div#'+name).css("height",height);
 		$('div#'+name).css("background-color","#F00");
+		$('div#'+name).html = "HELLO MOTO!!"
 		});
 }
 
