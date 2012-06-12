@@ -39,7 +39,9 @@ function BarChart(name,xmlurl)
 		var width = XMLWidth(xml);//The width of the chart
 		var height = XMLHeight(xml);
 		//append these to the div
+		alert("assigning width:"+width)
 		$('div#'+name).css("width",width);
+		alert("assigning heigth:"+height)
 		$('div#'+name).css("heigth",height);	
 		});
 }
