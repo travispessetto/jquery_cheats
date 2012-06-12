@@ -47,7 +47,15 @@ function BarChart(name,xmlurl)
 			$.jqplot(name,getBars(xml),{ seriesDefaults:{
 	            renderer:$.jqplot.BarRenderer,
 	            rendererOptions: {fillToZero: false},
-	        }});
+	        },
+	        axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+	            xaxis: {
+	                renderer: $.jqplot.CategoryAxisRenderer,
+	                ticks: getTicks(xml)
+	            }
+            }
+	        });
 		});
 }
 
