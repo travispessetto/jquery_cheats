@@ -13,7 +13,8 @@ $(document).ready(function(){
 		var data = $(this).serialize();
 		if($(this).attr("data-params"))
 		{
-			data += "&"+eval($(this).attr("data-params"));
+			data += "&"+eval($(this).attr("data-params").serialize());
+			alert(data);
 		}
 		$.ajax({type: "post",
 		url: $(this).attr("data-onclick"),
