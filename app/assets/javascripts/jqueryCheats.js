@@ -47,15 +47,6 @@ function BarChart(name,xmlurl)
 		$.jqplot(name,getBars(xml),{ seriesDefaults:{
             renderer:$.jqplot.BarRenderer,
             rendererOptions: {fillToZero: true},
-            axes:{
-            xaxis: {
-                renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: ["one","two"]
-            },
-            yaxis: {
-                pad: 1.05,
-                tickOptions: {formatString: '$%d'}
-            }},
         }});
 		});
 }
