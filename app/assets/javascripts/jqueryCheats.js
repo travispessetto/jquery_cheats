@@ -34,14 +34,14 @@ function BarChart(name,xmlurl)
 {
 	//this is the BarChart Method
 	//get the XML data
-	$.get(xmlurl,function(xml){
+	/*$.get(xmlurl,function(xml){
 		//we have the URL object as xml
 		var width = XMLWidth(xml);//The width of the chart
 		var height = XMLHeight(xml);
 		//append these to the div
 		$('div#'+name).css("width",width);
 		$('div#'+name).css("heigth",height);	
-		});
+		});*/
 }
 
 function getTicks(url)
