@@ -66,6 +66,7 @@ function getTicks(xml)
 	$(xml).find("tick").each(function(){
 		ticks.push($(this).attr("text"));
 	});
+	return ticks;
 }
 
 function getBars(xml)
