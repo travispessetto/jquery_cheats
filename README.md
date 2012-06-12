@@ -14,6 +14,12 @@ Then add the following to app/assets/application.js
 //= require jqueryCheats
 ```
 
+If you would like charting functionality make sure the following code is in app/assets/application.js
+
+```js
+//=require jqplot
+```
+
 ##Functions
 
 Mouse over image, Image1 changes to Image2 when moused over:

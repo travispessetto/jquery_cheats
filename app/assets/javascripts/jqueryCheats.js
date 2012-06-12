@@ -42,7 +42,7 @@ function BarChart(name,xmlurl)
 		alert("assigning width:"+width)
 		$('div#'+name).css("width",width);
 		alert("assigning heigth:"+height)
-		$('div#'+name).css("heigth",height);	
+		$('div#'+name).css("height",height);	
 		});
 }
 
@@ -64,5 +64,5 @@ function XMLWidth(xml)
 
 function XMLHeight(xml)
 {
-	return $(xml).find("size").attr("heigth");
+	return $(xml).find("size").attr("height");
 }
