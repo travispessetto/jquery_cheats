@@ -75,7 +75,7 @@ function XMLHeight(xml)
 	return $(xml).find("size").attr("height");
 }
 
-function laodBars(xml)
+function loadBars(xml)
 {
 	var bars = [];
 	$(xml).find("bar").each(
