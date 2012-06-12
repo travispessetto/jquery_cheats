@@ -64,5 +64,5 @@ function XMLWidth(xml)
 
 function XMLHeight(xml)
 {
-	return $(xml).find("size").attr("height");
+	return $(xml).find("size").attr("heigth");
 }
