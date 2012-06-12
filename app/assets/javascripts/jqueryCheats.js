@@ -22,7 +22,7 @@ $(document).ready(function(){
 		dataType: "script"});
 	});
 	//start by loading the barcharts...
-	$("div.barchart").each(function(){BarChart($(this).attr("name"),$(this).attr("data-xmlurl"))});
+	$("div.barchart").each(function(){BarChart($(this).attr("id"),$(this).attr("data-xmlurl"))});
 });
 
 ///some helpter functions here
