@@ -80,6 +80,7 @@ function laodBars(xml)
 	var bars = [];
 	$(xml).find("bar").each(
 		function(){
+			alert("BAR VALUE:"+$(this).attr("size"));
 			bars.push($(this).attr("size"));
 		});
 	return bars;
