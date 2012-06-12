@@ -80,7 +80,7 @@ JQuery Cheats Barchart is the first graph to be implemented and uses XML to pars
 Make sure the following is in your app/assets/javascripts/application.js file
 
 ```js
-//= jqplot/plugins/jqplot.barRenderer.min.js
-//= jqplot/plugins/jqplot.categoryAxisRenderer.min.js
-//= jqplot/plugins/jqplot.pointLabels.min.js
+//= require jqplot/plugins/jqplot.barRenderer.min.js
+//= require jqplot/plugins/jqplot.categoryAxisRenderer.min.js
+//= require jqplot/plugins/jqplot.pointLabels.min.js
 ```

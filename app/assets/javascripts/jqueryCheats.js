@@ -46,14 +46,26 @@ function BarChart(name,xmlurl)
 		$('div#'+name).css("background-color","#F00");
 		$.jqplot(name,getBars(xml),{ seriesDefaults:{
             renderer:$.jqplot.BarRenderer,
-            rendererOptions: {fillToZero: true}
+            rendererOptions: {fillToZero: true},
+            xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                ticks: getTicks(xml);
+            },
+            yaxis: {
+                pad: 1.05,
+                tickOptions: {formatString: '$%d'}
+            }
         }});
 		});
 }
 
-function getTicks(url)
+function getTicks(xml)
 {
 	//this function should get the ticks from the XML
+	var ticks = [];
+	$(xml).find("tick").each(function(){
+		ticks.push($(this).attr("text"));
+	});
 }
 
 function getBars(xml)
