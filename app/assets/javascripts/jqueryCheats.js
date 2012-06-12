@@ -7,13 +7,13 @@ $(document).ready(function(){
 	         success: function(data){eval(data);},
 	         dataType: "script"});
 	});
-	//make radio buttons onchange compatible
+	//make radio buttons onclick compatible
 	$('input[type="radio"][data-onclick]').live("change",function()
 	{
 		var data = $(this).serialize();
 		if($(this).attr("data-params"))
 		{
-			data += "&"+$(this).attr("data-params");
+			data += "&"+eval($(this).attr("data-params"));
 		}
 		$.ajax({type: "post",
 		url: $(this).attr("data-onclick"),
