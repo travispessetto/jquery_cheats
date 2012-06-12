@@ -39,11 +39,6 @@ function BarChart(name,xmlurl)
 		var width = XMLWidth(xml);//The width of the chart
 		var height = XMLHeight(xml);
 		//append these to the div
-		alert("assigning width:"+width)
-		$('div#'+name).css("width",width);
-		alert("assigning heigth:"+height)
-		$('div#'+name).css("height",height);
-		$('div#'+name).css("background-color","#F00");
 			$.jqplot(name,getBars(xml),{ seriesDefaults:{
 	            renderer:$.jqplot.BarRenderer,
 	            rendererOptions: {fillToZero: false},
@@ -53,6 +48,11 @@ function BarChart(name,xmlurl)
 	            xaxis: {
 	                renderer: $.jqplot.CategoryAxisRenderer,
 	                ticks: getTicks(xml)
+	            },
+	            yaxix:
+	            {
+	            	min: $(xml).find("yaxis").attr("min"),
+	            	max: $(xml).find("yaxix").attr("max")
 	            }
             }
 	        });
