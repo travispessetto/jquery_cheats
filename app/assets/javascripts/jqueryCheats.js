@@ -44,10 +44,10 @@ function BarChart(name,xmlurl)
 		alert("assigning heigth:"+height)
 		$('div#'+name).css("height",height);
 		$('div#'+name).css("background-color","#F00");
-		$.jqplot(name,getBars(xml),{ seriesDefaults:{
-            renderer:$.jqplot.BarRenderer,
-            rendererOptions: {fillToZero: true},
-        }});
+			$.jqplot(name,getBars(xml),{ seriesDefaults:{
+	            renderer:$.jqplot.BarRenderer,
+	            rendererOptions: {fillToZero: false},
+	        }});
 		});
 }
 
