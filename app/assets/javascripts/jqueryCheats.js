@@ -52,7 +52,7 @@ function BarChart(name,xmlurl)
 	            yaxis:
 	            {
 	            	min: getYAxisMin(xml),
-	            	max: getYAxixMax(xml),
+	            	max: getYAxisMax(xml),
 	            	autoscale: true
 	            }
             }
