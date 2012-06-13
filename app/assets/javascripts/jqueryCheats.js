@@ -69,7 +69,7 @@ function getYAxisMin(xml)
 
 function getYAxisMax(xml)
 {
-	var max = $(xml)find("yaxix").attr("max");
+	var max = $(xml).find("yaxis").attr("max");
 	alert("Y Axis Max is:" + max);
 	return max;
 }
