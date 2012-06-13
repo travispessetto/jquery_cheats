@@ -48,12 +48,6 @@ function BarChart(name,xmlurl)
 	            xaxis: {
 	                renderer: $.jqplot.CategoryAxisRenderer,
 	                ticks: getTicks(xml)
-	            },
-	            yaxis:
-	            {
-	            	min: getYAxisMin(xml),
-	            	max: getYAxisMax(xml),
-	            	autoscale: true
 	            }
             }
 	        });
