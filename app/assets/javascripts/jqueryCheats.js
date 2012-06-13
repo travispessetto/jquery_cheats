@@ -41,7 +41,7 @@ function BarChart(name,xmlurl)
 		//append these to the div
 			$.jqplot(name,getBars(xml),{ seriesDefaults:{
 	            renderer:$.jqplot.BarRenderer,
-	            rendererOptions: {fillToZero: false},
+	            rendererOptions: {fillToZero: true},
 	        },
 	        axes: {
             // Use a category axis on the x axis and use our custom ticks.
