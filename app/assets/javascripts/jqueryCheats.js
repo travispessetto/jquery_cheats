@@ -64,14 +64,22 @@ function getYAxisMin(xml)
 {
 	var min = $(xml).find("yaxis").attr("min");
 	alert ("Y Axis min is: " + min);
-	return min;
+	if(min)
+	{
+		return min;
+	}
+	else
+	{
+		return null;	
+	}
 }
 
 function getYAxisMax(xml)
 {
 	var max = $(xml).find("yaxis").attr("max");
 	alert("Y Axis Max is:" + max);
-	return max;
+	if(max) return max;
+	if(!max) return null;
 }
 function getTicks(xml)
 {
