@@ -51,8 +51,8 @@ function BarChart(name,xmlurl)
 	            },
 	            yaxis:
 	            {
-	            	min: $(xml).find("yaxis").attr("min"),
-	            	max: $(xml).find("yaxis").attr("max"),
+	            	min: getYAxisMin(xml),
+	            	max: getYAxixMax(xml),
 	            	autoscale: true
 	            }
             }
@@ -60,6 +60,19 @@ function BarChart(name,xmlurl)
 		});
 }
 
+function getYAxisMin(xml)
+{
+	var min = $(xml).find("yaxis").attr("min");
+	alert ("Y Axis min is: " + min);
+	return min;
+}
+
+function getYAxisMax(xml)
+{
+	var max = $(xml)find("yaxix").attr("max");
+	alert("Y Axis Max is:" + max);
+	return max;
+}
 function getTicks(xml)
 {
 	//this function should get the ticks from the XML
