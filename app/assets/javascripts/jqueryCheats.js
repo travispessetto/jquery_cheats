@@ -14,7 +14,7 @@ $(document).ready(function(){
 	//make radio buttons onclick compatible
 	$('input[type="radio"][data-onclick]').live("change",function()
 	{
-		var data = $(this).serialize();
+		data = $(this).serialize();
 		if($(this).attr("data-params"))
 		{
 			data += "&"+$(this).attr("data-params");
@@ -25,6 +25,11 @@ $(document).ready(function(){
 		success: function(data){eval(data);},
 		dataType: "script"});
 	});
+	//start loading the pie charts...
+	$("div.piechart").each(function(){
+		pieChart($(this).attr("id"),$(this).attr("data-xmlurl"));
+	});
+	//bind click events to  piehcart
 	//start by loading the barcharts...
 	$("div.barchart").each(function(){BarChart($(this).attr("id"),$(this).attr("data-xmlurl"))});
 	$('div.barchart').bind('jqplotDataClick', 
@@ -155,6 +160,7 @@ function loadBars(xml)
 function getTickInterval(xml)
 {
 	var interval = $(xml).find("yaxis").attr("tickInterval");
+	alert("INTERVAL IS: "+interval)
 	if(interval) return interval;
 	else return null;
 }
@@ -173,4 +179,63 @@ function debug2dArray(arr)
 		$("#debug").append("]");
 	}
 	$("#debug").append("\n]");
+	return arr;
+}
+
+///THIS IS THE PIE CHART SECTION, Somethings may be borrowed from BarCharts
+//###THINGS BORROWED FROM BARCHARTS: debug2dArray
+
+function pieChart(name,xmlurl)
+{
+	$.get(xmlurl,function(xml)
+	{
+
+		loadSize(name,xml);
+		slices= [];
+		slices.push(loadSlices(xml));
+		$("#debug").append("\nSLICES ARR (getting ready to load):");
+		debug2dArray(slices);
+		//debug2dArray(slices)
+		//now load in the pie chart
+		var plot1 = $.jqplot(name,[slices],
+			{
+				seriesDefaults:{
+					renderer: $.jqplot.PieRenderer,
+					rendererOptions:{
+						showDataLables: true
+					},
+				},
+				legend: { show:true, location: 'e' }
+		});
+	});//end get AJAX request
+}
+
+
+
+function loadSlices(xml)
+{
+	slices = [];
+	$(xml).find("category").each(
+		function()
+		{
+			$(this).find("slice").each(
+				function()
+				{
+					slice = [$(this).attr("name")];
+					slice.push($(this).attr("size"));
+					slices.push(slice);
+				}
+			);
+		}
+	);
+	return slices;
+}
+
+function loadSize(divid,xml)
+{
+	width = $(xml).find("size").attr("width");
+	if(width) $("#"+divid).css("width",width);
+	height = $(xml).find("size").attr("height");
+	if(height) $("#"+divid).css("height",height);
+	$("#debug").append("\nWidth: "+width+"\nHeight:"+height);
 }

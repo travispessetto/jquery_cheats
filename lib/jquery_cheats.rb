@@ -41,6 +41,12 @@ module JQueryCheats
       #we will have to relly on XML to get the rest of the data...
     end
     
+    def piechart(name,xmlurl)
+      #create a new barchar div tag, class of jqplot is used to simplify jquery binding
+      html = "<div id=\"#{name}\" class=\"piechart\" data-xmlurl=\"#{xmlurl}\"></div>".html_safe
+      #we will have to relly on XML to get the rest of the data...
+    end
+    
     def initialize
      
     end
