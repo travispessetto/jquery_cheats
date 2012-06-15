@@ -29,6 +29,13 @@ $(document).ready(function(){
 	$("div.piechart").each(function(){
 		pieChart($(this).attr("id"),$(this).attr("data-xmlurl"));
 	});
+	$("div.piechart").bind('jqplotDataClick',
+	function(ev,seriesIndex,pointIndex,data){
+		if(data[2] != "")
+		{
+			window.location = data[2];
+		}
+	});
 	//bind click events to  piehcart
 	//start by loading the barcharts...
 	$("div.barchart").each(function(){BarChart($(this).attr("id"),$(this).attr("data-xmlurl"))});
@@ -191,7 +198,7 @@ function pieChart(name,xmlurl)
 	{
 
 		loadSize(name,xml);
-		slices= [];
+		slices= new Array();
 		slices.push(loadSlices(xml));
 		$("#debug").append("\nSLICES ARR (getting ready to load):");
 		debug2dArray(slices);
@@ -205,7 +212,7 @@ function pieChart(name,xmlurl)
 						showDataLables: true
 					},
 				},
-				legend: { show:true, location: 'e' }
+				legend:{show: true, location: 'e'}
 		});
 	});//end get AJAX request
 }
@@ -214,15 +221,18 @@ function pieChart(name,xmlurl)
 
 function loadSlices(xml)
 {
-	slices = [];
+	slices = new Array();
 	$(xml).find("category").each(
 		function()
 		{
 			$(this).find("slice").each(
 				function()
 				{
-					slice = [$(this).attr("name")];
-					slice.push($(this).attr("size"));
+					slice = new Array($(this).attr("name"));
+					slice.push(parseInt($(this).attr("size")));
+					link = $(this).attr("link");
+					if(link)slice.push(link);
+					else slice.push("");
 					slices.push(slice);
 				}
 			);

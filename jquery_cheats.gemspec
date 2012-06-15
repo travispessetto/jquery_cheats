@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name = "jquery_cheats"
-  s.version = "2.1.0"
+  s.version = "2.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Travis Pessettto"]
-  s.date = "2012-06-07"
-  s.description = "JQuery Asset Pipeline tricks"
+  s.date = "2012-06-15"
+  s.description = "JQuery, JQPlot graphing, and other useful items for jquery."
   s.email = "travis@pessetto.com"
   s.extra_rdoc_files = ["README.md", "lib/jquery_cheats.rb"]
   s.files = Dir["{lib,app,vendor}/**/*"]+["README.md", "Rakefile", "Manifest", "jquery_cheats.gemspec"]
