@@ -1,6 +1,3 @@
-//I KNOW it is global but, I am unsure of another way to do it.
-var links = [];
-//global variable used to iterate
 var categoryPos = 0;
 $(document).ready(function(){
 	//make select boxes ajax-compatible by adding two params data-onchange=true and data-url="/path/to"
@@ -45,10 +42,17 @@ $(document).ready(function(){
             	/* window.open(data[2]); */
             	/* To open in the same window use: */
    				for(i = 0; i < data.length; i++) $("#debug").append("\nData["+i+"]:"+data[i]);
-   				$("#debug").append("\nlink: "+links[data[0]-1]);
-   				window.location = links[data[0]-1]
+   				$("#debug").append("\nlink: "+data[2]);
+   				window.location = data[2]
             }
         );
+        
+        //#TO PREVENT PROBLEMS WITH DEBUG IF IT DOES NOT EXIST
+        if(!$("#debug"))
+        {
+        	$("html").append("<div id=\"debug\"></div>");
+        	$("div#debug").css("display","none");
+        }
 });
 
 ///some helpter functions here
@@ -64,11 +68,11 @@ function BarChart(name,xmlurl)
 		//we have the URL object as xml
 		var width = XMLWidth(xml);//The width of the chart
 		var height = XMLHeight(xml);
-		bars = getBars(xml);
+		var bars = getBars(xml);
 		//append these to the div
 		$("div#"+name).css("width",width);
 		$("div#"+name).css("height",height);
-			$.jqplot(name,bars,{ seriesDefaults:{
+			$.jqplot(name,getBars(xml),{ seriesDefaults:{
 	            renderer:$.jqplot.BarRenderer,
 	            rendererOptions: {fillToZero: true, barWidth: barWidth(xml)}
 	        },
@@ -124,17 +128,25 @@ function getTicks(xml)
 	});
 	return ticks;
 }
-
-function getBars(xml)
-{
-	//this function aims at translating the data into a 2d array for rendering
-	var twoDArray = [];
-	$(xml).find("category").each(
-		function(){
-			twoDArray.push(loadBars($(this)));
-		});
-	debug2dArray(twoDArray);
-	return twoDArray;
+function loadBars(categoryid, xml) {
+    var bar = [];
+    var bars = [];
+    $(xml).find("bar").each(function() {
+        bar.push(parseInt(categoryid, 10));
+        bar.push(parseInt($(this).attr("size"), 10));
+        bar.push($(this).attr("link"));
+        bars.push(bar);
+    });
+    return bars; //moved from end of "each" iterator to here.
+}
+function getBars(xml) {
+    var categoryid = 1;
+    var bars = [];
+    $(xml).find("category").each(function() {
+        bars.push(loadBars(categoryid, $(this)));
+        categoryid++;
+    });
+    return bars;
 }
 
 function XMLWidth(xml)
@@ -148,26 +160,30 @@ function XMLHeight(xml)
 	return $(xml).find("size").attr("height");
 }
 
-function loadBars(xml)
+/*function loadBars(xml,categoryid)
 {
-	bars = [];
+	bars = [];//the category to put the bar...probably shouldn't go here.
 	$(xml).find("bar").each(
 		function(){
 			//categoryPos = categoryPos+1;
 			//$("#debug").append("\nCATEGORY POSSITION:"+categoryPos)
 			//bars.push(categoryPos);
-			bars.push($(this).attr("size"));
+			bar= new Array();
+			bar.push(parseInt(categoryid));
+			bar.push(parseInt($(this).attr("size")));
 			link = $(this).attr("link");
-			if(link)links.push(link); else links.push("#");
+			if(link)bar.push(link); else links.push("#");
+			bars.push(bar);
 		});
+	$("#debug").append("\nDEBUG bars Array in Loadbars:");
+	debug2dArray(bars);
 	return bars;
-}
+}*/
 
 
 function getTickInterval(xml)
 {
 	var interval = $(xml).find("yaxis").attr("tickInterval");
-	alert("INTERVAL IS: "+interval)
 	if(interval) return interval;
 	else return null;
 }
@@ -208,10 +224,12 @@ function pieChart(name,xmlurl)
 			{
 				seriesDefaults:{
 					renderer: $.jqplot.PieRenderer,
-					rendererOptions:{
-						showDataLables: true
-					},
-				},
+					rendererOptions: {
+				       // Put data labels on the pie slices.
+				       // By default, labels show the percentage of the slice.
+				        showDataLabels: true
+				       }
+     		   },
 				legend:{show: true, location: 'e'}
 		});
 	});//end get AJAX request
