@@ -35,7 +35,9 @@ $(document).ready(function(){
 	});
 	//bind click events to  piehcart
 	//start by loading the barcharts...
-	$("div.barchart").each(function(){BarChart($(this).attr("id"),$(this).attr("data-xmlurl"))});
+	$("div.barchart").each(function(){
+		BarChart($(this).attr("id"),$(this).attr("data-xmlurl"));
+		});
 	$('div.barchart').bind('jqplotDataClick', 
         function (ev, seriesIndex, pointIndex, data) {
             	/* To open in a NEW window use: */
@@ -59,13 +61,23 @@ $(document).ready(function(){
 
 //####THIS ONE HELPS PROCESS XML
 
-
+function loadBGImage(xml)
+{
+	var bgimage = "none";
+	$(xml).find("backgroundImage").each(function()
+	{
+		$("#debug").append("\nLOADING BG:"+$(this).text())
+		bgimage = "url('"+$(this).text()+"')";
+	});
+	return bgimage;
+}
 function BarChart(name,xmlurl)
 {
 	//this is the BarChart Method
 	//get the XML data
 	$.get(xmlurl,function(xml){
 		//we have the URL object as xml
+		$("div#"+name).css("background-image",loadBGImage(xml));
 		var width = XMLWidth(xml);//The width of the chart
 		var height = XMLHeight(xml);
 		var bars = getBars(xml);
@@ -76,6 +88,12 @@ function BarChart(name,xmlurl)
 	            renderer:$.jqplot.BarRenderer,
 	            rendererOptions: {fillToZero: true, barWidth: barWidth(xml)}
 	        },
+	        title:{
+	        	text: grabTitle(xml)
+	        },
+	        grid: {
+	         	background: getBackground(xml)
+	         },
 	        axes: {
             // Use a category axis on the x axis and use our custom ticks.
 	            xaxis: {
@@ -93,7 +111,26 @@ function BarChart(name,xmlurl)
 	        });
 		});
 }
-
+function getBackground(xml)
+{
+  var bgcolor = null;
+  $(xml).find("background").each(function()
+  {
+  		$("#debug").append("\nFound BG.");
+  		bgcolor = $(this).text();
+  });
+  return bgcolor;
+}
+function grabTitle(xml)
+{
+	$("#debug").append("\n[Function grabTitle(xml)]: Grabbing the title.")
+	
+	return $(xml).find("title").each(function(){
+		$("#debug").append("\n[Function grabTitle(xml)]: Found a title!!!")
+		return $(this).text();
+	});
+	return null;
+}
 function barWidth(xml)
 {
 	var width = $(xml).find("render").attr("barWidth");
