@@ -5,7 +5,7 @@ library.
 It is as easy as adding this to your Gemfile
 
 ```ruby
-gem 'jquery_cheats','~>2.1.0'
+gem 'jquery_cheats','~>3.0.0'
 ```
 
 Then add the following to app/assets/application.js
@@ -73,14 +73,4 @@ string such as(item=4&item2=3)
 
 JQuery Cheats comes packaged with JQueryPlots as of 2.1.0, but some functions may not be available until later dates.
 
-###Barchart
-
-JQuery Cheats Barchart is the first graph to be implemented and uses XML to parse the data.
-
-Make sure the following is in your app/assets/javascripts/application.js file
-
-```js
-//= require jqplot/plugins/jqplot.barRenderer.min.js
-//= require jqplot/plugins/jqplot.categoryAxisRenderer.min.js
-//= require jqplot/plugins/jqplot.pointLabels.min.js
-```
+See the wiki to learn how to make a bar chart, or pie chart.
