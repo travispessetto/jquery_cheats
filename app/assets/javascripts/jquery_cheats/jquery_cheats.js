@@ -41,11 +41,18 @@ $(document).ready(function(){
     });
     //CONTRIBUTION END
 	//The following provide click-to-link capabilities in charts
-	$("div.piechart").bind('jqplotDataClick',function(ev,seriesIndex,pointIndex,data){
-		if(data[2] != "") window.location = data[2];
+	$("div.piechart").live('jqplotDataClick',function(ev,seriesIndex,pointIndex,data){
+		if(data[2] != "")
+		{ 
+			
+			window.location = data[2];
+		}
 	});
-	$("div.barchart").bind('jqplotDataClick',function(ev,seriesIndex,pointIndex,data){
-		if(data[2] != "") window.location = data[2];
+	$("div.barchart").live('jqplotDataClick',function(ev,seriesIndex,pointIndex,data){
+		if(data[2] != "")
+		{
+			 window.location = data[2];
+		}
 	});
 });
 //functions specific to barchart
@@ -92,11 +99,18 @@ function barChart(name,xmlurl)
 			gridLine: getGridLineColor(xml),
 			borderColor: getGridBorderColor(xml)
 		},
+		axesDefaults:
+		{
+			tickRenderer: $.jqplot.CanvasAxisTickRenderer
+		},
 		axes:
 		{
 			xaxis:
 			{
 				renderer: $.jqplot.CategoryAxisRenderer,
+				tickOptions:{
+					angle: 30
+				},
 				ticks: getTicks(xml),
 				autoscale: true
 			}
@@ -104,7 +118,10 @@ function barChart(name,xmlurl)
 	});
 	return true;
 	},
-	error: function(){alert("ERROR OCCURED"); return false},
+	error:  function(xhr, status, error) {
+		  var err = eval("(" + xhr.responseText + ")");
+		  alert(err.Message);
+		},
 	async: false,
 	timeout: 3000});
 }
