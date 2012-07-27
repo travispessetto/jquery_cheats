@@ -58,7 +58,8 @@ $(document).ready(function(){
 //functions specific to barchart
 function updateCharts()
 {
-	$("div.barchart:empty").each(function(){
+	$("div.barchart:not([data-barchartloaded])").each(function(){
+		$(this).attr("data-barchartloaded","1");
 		barChart($(this).attr("id"),$(this).attr("data-xmlurl"));
 	})
 }
@@ -76,6 +77,7 @@ function barChart(name,xmlurl)
 			pointLabels.push(bars[i][1]);
 		}
 		$.jqplot(name,[bars],{
+			seriesColors: getSeriesColors(xml),
 		seriesDefaults:
 		{
 			renderer: $.jqplot.BarRenderer,
@@ -232,4 +234,14 @@ function getGridLineColor(xml)
 function getGridBorderColor(xml)
 {
 	return $(xml).find("grid borderColor").text();
+}
+function getSeriesColors(xml)
+{
+	colors = [];
+	$(xml).find("grid seriesColor").each(function()
+	{
+		colors.push($(this).text());
+	});
+	if(colors.length < 1)colors.push("#0f0");
+	return colors;
 }
