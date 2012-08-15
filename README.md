@@ -5,7 +5,7 @@ library.
 It is as easy as adding this to your Gemfile
 
 ```ruby
-gem 'jquery_cheats','~>3.0.0'
+gem 'jquery_cheats','~>5.0.0'
 ```
 
 Then add the following to app/assets/application.js
@@ -71,6 +71,8 @@ string such as(item=4&item2=3)
 
 ##Graphing
 
-JQuery Cheats comes packaged with JQueryPlots as of 2.1.0, but some functions may not be available until later dates.
+JQuery Cheats works in conjunction with [plotSimple](http://github.com/plowdawg/plotSimple) to provide you with a graphing interface.
 
-See the wiki to learn how to make a bar chart, or pie chart.
+##Change Log
+
+* Version 5.0 removes DOMSubtreeModified due to browser issues.  Work around call barChart(id,xmlurl) in your JavaScript

@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = "jquery_cheats"
-  s.version = "4.0.2"
+  s.version = "5.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Travis Pessettto"]
-  s.date = "2012-06-26"
+  s.date = Date.today
   s.description = "JQuery, JQPlot graphing, and other useful items for jquery."
   s.email = "travis@pessetto.com"
   s.extra_rdoc_files = ["README.md", "lib/jquery_cheats.rb"]

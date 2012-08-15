@@ -47,6 +47,10 @@ module JQueryCheats
       #we will have to relly on XML to get the rest of the data...
     end
     
+    def stackedcolumn(name,xmlurl)
+      html = "<div id=\"#{name}\" class=\"stackedcolumn\" data-xmlurl=\"#{xmlurl}\"></div>".html_safe
+    end
+    
     def initialize
      
     end
