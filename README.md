@@ -76,3 +76,4 @@ JQuery Cheats works in conjunction with [plotSimple](http://github.com/plowdawg/
 ##Change Log
 
 * Version 5.0 removes DOMSubtreeModified due to browser issues.  Work around call barChart(id,xmlurl) in your JavaScript
+* Version 5.1 adds the ability to save charts as images (buggy)
