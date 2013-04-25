@@ -63,9 +63,6 @@ function stackedColumn(name, xmlurl) {
 	$.get(xmlurl, function(xml) {
 		loadLinks(xml);
 		establishSize(name,xml);
-		var s1 = [2, 6, 7, 10];
-		var s2 = [7, 5, 3, 4];
-		var s3 = [14, 9, 3, 8];
 		var series = loadStackedColumns(xml)
 		for(var i = 0; i < series.length; i++)
 		{
@@ -190,6 +187,7 @@ function barChart(name, xmlurl) {
 			return true;
 		},
 		error : function(xhr, status, error) {
+			alert("A fatal error occured.")
 			var err = eval("(" + xhr.responseText + ")");
 			alert(err.Message);
 		},
