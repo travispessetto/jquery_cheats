@@ -1,8 +1,0 @@
-Manifest
-README.md
-Rakefile
-app/assets/javascripts/jqueryCheats.js
-jquery_cheats.gemspec
-lib/engine.rb
-lib/jquery_cheats.rb
-lib/railtie.rb
