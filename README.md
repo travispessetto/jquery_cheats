@@ -1,28 +1,39 @@
 #JQuery Cheats
-JQuery Cheats is Gem that makes it easy to do simple little JavaScript tricks via the JQuery
-library.
-##Installation
-It is as easy as adding this to your Gemfile
 
-```ruby
-gem 'jquery_cheats','~>5.0.0'
-```
+JQUery cheats is a simple gem that is suppose to make a few things easier within the Rails framework.
+It is designed to be used with Rails >= 3.0.0 and later will support the asset pipeline requiring Rails >= 3.1.0
 
-Then add the following to app/assets/application.js
+##The Asset Pipeline
 
-```js
-//= require jqueryCheats
-```
+Because we want to make installing the asset pipeline easier we've provided the following instructions:
 
-If you would like charting functionality make sure the following code is in app/assets/application.js
-
-```js
-//= require jqplot/jquery.jqplot.js
-```
-
-Depending on the chart, you will have to include the plugin too, which are loaded in the jqplot/plugins directory
-
-
+  1.  This gem has a generator to include the needed files run ```rails g jquery_cheats:asset_pipeline```
+  2.  Make sure that your Gemfile has the following lines of code in it:
+  
+      ```ruby
+      group :assets do
+        gem 'sass-rails', " ~> 3.1.0"
+        gem 'coffee-rails', " ~> 3.1.0"
+        gem 'uglifier'
+      end
+      gem 'jquery-rails'
+      ```
+  3.  Replace the following:
+  
+  ```ruby
+  Bundler.require(:default, Rails.env) if defined?(Bundler)
+  ```
+    with:
+  ```ruby
+  if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require *Rails.groups(:assets => %w(development test))
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
+  end
+  ```
+  4.See the rest on [RailsCasts](http://railscasts.com/episodes/282-upgrading-to-rails-3-1?view=asciicast)
+  
 ##Functions
 
 Mouse over image, Image1 changes to Image2 when moused over:
@@ -76,4 +87,3 @@ JQuery Cheats works in conjunction with [plotSimple](http://github.com/plowdawg/
 ##Change Log
 
 * Version 5.0 removes DOMSubtreeModified due to browser issues.  Work around call barChart(id,xmlurl) in your JavaScript
-* Version 5.1 adds the ability to save charts as images (buggy)

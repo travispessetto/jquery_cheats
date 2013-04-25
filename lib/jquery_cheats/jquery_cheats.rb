@@ -1,7 +1,7 @@
 module JQueryCheats
   require 'railtie' if defined?(Rails)
   require 'engine' if defined?(Rails)
-  require 'generators/assetpipeline_generator'
+  require 'generators/jquery_cheats/asset_pipeline_generator'
   module HoverImage
     #class used to do a quick Hover image
     
