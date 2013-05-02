@@ -1,5 +1,16 @@
 $(document).ready(function() {
-	//the following are for AJAX requests of form objects
+    /*$('html').keypress(function(e){
+        if(e.which == 13 && !$(\"textarea\").is(\":focus\")){
+            $('form').submit();
+            return false;
+        }
+    });*/
+	$(\"a[data-back]\").live(\"click\",
+                 function(){
+                  var ref = document.referrer;
+                  document.location=ref;
+                   });
+	 //the following are for AJAX requests of form objects
 	$("select[data-onchange]").live("change", function() {
 		$.ajax({
 			type : "post",
